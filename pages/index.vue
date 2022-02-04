@@ -1,12 +1,6 @@
 <template>
   <div class="container">
-    <div class="header">
-      <img src="@/assets/imgs/logo.png" class="img">
-      <div class="header-right">
-        <NuxtLink to="/register">新規登録</NuxtLink>
-        <NuxtLink to="/login">ログイン</NuxtLink>
-      </div>
-    </div>
+    <HeaderComponent></HeaderComponent>
   </div>
 </template>
 

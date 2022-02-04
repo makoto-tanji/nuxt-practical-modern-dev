@@ -1,12 +1,6 @@
 <template>
   <div class="container">
-    <div class="header">
-      <img src="@/assets/imgs/logo.png" class="img">
-      <div class="header-right">
-        <NuxtLink to="/register">新規登録</NuxtLink>
-        <NuxtLink to="/login">ログイン</NuxtLink>
-      </div>
-    </div>
+    <HeaderComponent></HeaderComponent>
     <div class="form-card">
       <h2>ログイン</h2>
       <div class="email">
@@ -39,13 +33,20 @@ export default {
   input{
     width:300px;
   }
-  .header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-  }
-  .header-right *{
-    margin-right: 20px;
-  }
+  .form-card{
+  width: 350px;
+  height: auto;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: #000;
+  margin: 100px auto 30px auto;
+  padding: 20px 30px;
+  border-radius: 10px;
+}
+.form-card *{
+  margin-top: 10px;
+}
 </style>
