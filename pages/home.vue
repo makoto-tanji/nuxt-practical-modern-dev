@@ -1,6 +1,11 @@
 <template>
   <div class="container">
     <h2>ホーム</h2>
-    <SidebarComponent></SidebarComponent>
   </div>
 </template>
+
+<script>
+export default {
+  layout: 'main-layout'
+}
+</script>
