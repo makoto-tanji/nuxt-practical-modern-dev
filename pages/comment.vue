@@ -1,7 +1,6 @@
 <template>
   <div class="container">
-    <h2>ホーム</h2>
-    <CommentComponent></CommentComponent>
+    <h2>コメント画面</h2>
   </div>
 </template>
 
