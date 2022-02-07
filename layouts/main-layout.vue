@@ -24,5 +24,6 @@
     height: 40vh;
     display: flex;
     flex-direction: column;
+    margin-top: 50px;
   }
 </style>

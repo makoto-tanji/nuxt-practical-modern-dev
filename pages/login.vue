@@ -20,10 +20,15 @@ export default {
     return {
       email: null,
       password: null,
+      userLists: [],
     }
   },
   methods: {
-    login() {
+    async login() {
+      const resData = await this.$axios.get(
+        "http://127.0.0.1:8000/api/user/"
+      );
+      this.userLists = resData.data.data;
     }
   } //end methods
 }
