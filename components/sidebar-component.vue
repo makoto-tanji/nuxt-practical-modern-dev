@@ -16,16 +16,40 @@
     <div class="img-link-container">
       <NuxtLink to="/profile">
         <img src="@/assets/imgs/profile.png" class="img small-img">
-        登録情報
+        {{$store.state.displayName}}
       </NuxtLink>
     </div>
     <div class="share-container">
       <h2 class="title-share">シェア</h2>
-      <textarea name="share" id="share" cols="30" rows="7" placeholder="160文字以内で"></textarea>
+      <textarea name="share" id="share" cols="30" rows="7" placeholder="160文字以内で" v-model="content"></textarea>
     </div>
-    <button class="btn share-btn">シェアする</button>
+    <button class="btn share-btn" @click=storeComment>シェアする</button>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      content: "",
+    }
+  }, //end data
+  methods: {
+    async storeComment(){
+      if(!this.content){
+        alert('コメントが入力されていません。')
+        return
+      }
+      const sendData = {
+        user_id: this.$store.state.displayName,
+        content: this.content,
+      }
+      await this.$axios.post("http://127.0.0.1:8000/api/mainComment/", sendData);
+      location.reload();
+    }
+  }, //end methods
+}
+</script>
 
 <style scoped>
   .sidebar{
@@ -55,6 +79,7 @@
     background-color: rgb(23, 32, 42);
     resize: vertical;
     color: white;
+    font-size: 20px;
   }
   button{
     margin: 10px 0px 0px 0px;

@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import firebase from '~/plugins/firebase'
 export default {
   data() {
     return {
@@ -44,12 +45,46 @@ export default {
   },
   methods: {
     async register() {
+      if (!this.name || !this.email || !this.password) {
+        alert('必要事項が入力されていません。')
+        return
+      }
       const sendData = {
         name: this.name,
         email: this.email,
         password: this.password,
       };
       await this.$axios.post("http://127.0.0.1:8000/api/user/", sendData);
+      //Firebase
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .then((data) => {
+          //ユーザー名登録
+          data.user.updateProfile({
+            displayName: this.name
+          }),
+          //
+          data.user.sendEmailVerification().then(() => {
+            this.$router.replace('/confirm')
+          })
+        })
+        .catch((error) => {
+          switch (error.code) {
+            case 'auth/invalid-email':
+              alert('メールアドレスの形式が違います。')
+              break
+            case 'auth/email-already-in-use':
+              alert('このメールアドレスはすでに使われています。')
+              break
+            case 'auth/weak-password':
+              alert('パスワードは6文字以上で入力してください。')
+              break
+            default:
+              alert('エラーが起きました。しばらくしてから再度お試しください。')
+              break
+          }
+        })
     },
 
     async getUser() {

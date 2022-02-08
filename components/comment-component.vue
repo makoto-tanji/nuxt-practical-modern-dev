@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="status">
-      <h2 class="username">test</h2>
+      <h2 class="username">ID:{{userId}}</h2>
       <img src="@/assets/imgs/heart.png" class="img small-img" title="イイね">
       <p>0</p>
       <img src="@/assets/imgs/cross.png" class="img small-img" title="削除">
@@ -14,6 +14,12 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props:["userId"],
+}
+</script>
 
 <style scoped>
   .container{
