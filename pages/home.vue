@@ -5,7 +5,7 @@
       <div class="comment-card">
         <div class="status">
           <h2 class="username">{{item.user_id}}</h2>
-          <img 
+          <img
             v-if="heartIsClicked"
             @click="clickHeart(item)"
             src="@/assets/imgs/heart-pink.png"

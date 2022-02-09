@@ -14,21 +14,6 @@
       </div>
       <button class="btn" @click="register">新規登録</button>
     </div>
-    <div class="table">
-      <h2>連絡先リスト</h2>
-      <table>
-        <tr>
-          <th>ID</th>
-          <th>NAME</th>
-          <th>EMAIL</th>
-        </tr>
-        <tr v-for="item in userLists" :key="item.id">
-          <td>{{ item.id }}</td>
-          <td><input type="text" v-model="item.name" /></td>
-          <td><input type="email" v-model="item.email" /></td>
-        </tr>
-      </table>
-    </div>
   </div>
 </template>
 
@@ -86,16 +71,6 @@ export default {
           }
         })
     },
-
-    async getUser() {
-      const resData = await this.$axios.get(
-        "http://127.0.0.1:8000/api/user/"
-      );
-      this.userLists = resData.data.data;
-    }
-  }, //end methods
-  created() {
-    this.getUser();
   }
 }
 </script>

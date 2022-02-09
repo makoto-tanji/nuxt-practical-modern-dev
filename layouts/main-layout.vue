@@ -25,15 +25,6 @@ export default {
         this.$store.commit('updateDisplayName', user.displayName);
         this.$store.commit('updateEmail', user.email);
       };
-      // const resData = this.$axios.get(
-      //   "http://127.0.0.1:8000/api/user/"
-      // );
-      // this.userLists = resData.data.data;
-      // for (let i = 0; i<this.userLists.length; i++){
-      //   if(this.$store.state.displayName === this.userLists[i].name){
-      //     this.$store.commit('updateUserId', this.userLists[i].id);
-      //   }
-      // }
     }
   },
   mounted() {
